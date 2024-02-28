@@ -1,11 +1,17 @@
 AWSTemplateFormatVersion: "2010-09-09"
-Description: A sample template
+Description: A sample template for s3bucket
+ 
+Parameters:
+  BucketName:
+    Type: String
+    Description: Bucket name can include [a-z] numbers [0-9] and a [-] 
+    MinLength: 4
+    MaxLength: 12
+    AllowedPattern: "[a-z0-9-]+"
+
 
 Resources:
-   s3bucket-01:
+  s3bucket:
     Type: AWS::S3::Bucket
-Properties:
-  BucketEncryption: 
-    BucketEncryption
-  BucketName: s3bucket-01
-  
+    Properties:
+      BucketName: !Ref BucketName
